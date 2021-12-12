@@ -1,0 +1,4 @@
+// Microsoft Visual C++ generated Help ID include file.
+// Used by BCGPSymbolizer.rc
+//
+#define HIDC_MFCCOLORBUTTON_LINE        0x8066041c    // IDD_FORMVIEW_LINESYMPOLIZER
