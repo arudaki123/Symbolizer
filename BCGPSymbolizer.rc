@@ -211,8 +211,15 @@ BEGIN
     POPUP "DUMMY"
     BEGIN
         MENUITEM "Standard Toolbar",            ID_VIEW_TOOLBAR
-        MENUITEM "&Workspace",                  ID_VIEW_WORKSPACE
-        MENUITEM "&Workspace 2",                ID_VIEW_WORKSPACE2
+        MENUITEM "&Workspace Line",             ID_VIEW_WORKSPACE_LINE
+        MENUITEM "&Workspace Line Pattern",     ID_VIEW_WORKSPACE_LINEPATTERN
+        MENUITEM "&Workspace Raster",           ID_VIEW_WORKSPACE_RASTER
+        MENUITEM "&Workspace point",            ID_VIEW_WORKSPACE_POINT
+        MENUITEM "&Workspace Dot",              ID_VIEW_WORKSPACE_DOT
+        MENUITEM "&Workspace Ogr",              ID_VIEW_WORKSPACE_OGR
+        MENUITEM "&Workspace Osm",              ID_VIEW_WORKSPACE_OSM
+        MENUITEM "&Workspace Postgis",          ID_VIEW_WORKSPACE_POSTGIS
+        MENUITEM "&Workspace Python",           ID_VIEW_WORKSPACE_PYTHON
         MENUITEM "&Output",                     ID_VIEW_OUTPUT
         MENUITEM "&Toolbox",                    ID_VIEW_TOOLBOX
         MENUITEM "<User Toolbar>",              ID_VIEW_USER_TOOLBAR1
@@ -459,6 +466,88 @@ BEGIN
     LTEXT           "Static",IDC_STATIC_RESET_DOT,145,12,18,14
 END
 
+IDD_FORMVIEW_OGR_DATASOURCES DIALOGEX 0, 0, 171, 245
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    CONTROL         "Default",IDC_CHECK_DEFAULT_OGR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,64,12,39,10
+    LTEXT           "File",-1,12,38,46,8
+    EDITTEXT        IDC_EDIT_FILE_OGR,12,49,118,12,ES_AUTOHSCROLL
+    LTEXT           "Encoding",-1,12,104,46,8
+    EDITTEXT        IDC_EDIT_ENCODING_OGR,12,115,142,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_XML_OGR,12,154,142,72,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+    LTEXT           "Script",-1,12,143,43,9
+    LTEXT           "Base",-1,12,70,46,8
+    EDITTEXT        IDC_EDIT_BASE_OGR,12,81,142,12,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_STATIC_RESET_OGR,136,12,18,14
+    LTEXT           "Static",IDC_STATIC_FILE_OGR,139,49,15,13
+END
+
+IDD_FORMVIEW_OSM_DATASOURCES DIALOGEX 0, 0, 171, 245
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    CONTROL         "Default",IDC_CHECK_DEFAULT_OSM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,64,12,39,10
+    LTEXT           "File",-1,12,38,46,8
+    EDITTEXT        IDC_EDIT_FILE_OSM,12,49,118,12,ES_AUTOHSCROLL
+    LTEXT           "Encoding",-1,12,104,46,8
+    EDITTEXT        IDC_EDIT_ENCODING_OSM,12,115,142,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_XML_OSM,12,154,142,72,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+    LTEXT           "Script",-1,12,143,43,9
+    LTEXT           "Base",-1,12,70,46,8
+    EDITTEXT        IDC_EDIT_BASE_OSM,12,81,142,12,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_STATIC_RESET_OSM,136,12,18,14
+    LTEXT           "Static",IDC_STATIC_FILE_OSM,139,49,15,13
+END
+
+IDD_FORMVIEW_PYTHON_DATASOURCES DIALOGEX 0, 0, 169, 189
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    CONTROL         "Default",IDC_CHECK_DEFAULT_PYTHON,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,64,12,39,10
+    LTEXT           "Encoding",-1,12,33,46,8
+    EDITTEXT        IDC_EDIT_ENCODING_PYTHON,12,44,142,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_XML_PYTHON,12,83,142,72,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+    LTEXT           "Script",-1,12,72,43,9
+    LTEXT           "Static",IDC_STATIC_RESET_PYTHON,136,12,18,14
+END
+
+IDD_FORMVIEW_POSTGIS_DATASOURCES DIALOGEX 0, 0, 171, 512
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    CONTROL         "Default",IDC_CHECK_DEFAULT_POSTGIS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,64,12,39,10
+    EDITTEXT        IDC_EDIT_XML_POSTGIS,12,322,142,72,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+    LTEXT           "Script",-1,12,311,43,9
+    LTEXT           "Static",IDC_STATIC_RESET_POSTGIS,136,12,18,14
+    CONTROL         "",IDC_TAB_POSTGIS,"SysTabControl32",0x0,12,30,142,269
+END
+
+IDD_TAB_1_POSTGIS DIALOGEX 0, 0, 172, 310
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    LTEXT           "Table",IDC_STATIC,13,27,46,8
+    EDITTEXT        IDC_EDIT_TABLE_POSTGIS,13,38,146,12,ES_AUTOHSCROLL
+    LTEXT           "Encoding",IDC_STATIC,13,72,46,8
+    EDITTEXT        IDC_EDIT_ENCODING_POSTGIS,13,83,146,12,ES_AUTOHSCROLL
+    LTEXT           "DBnam",IDC_STATIC,13,101,46,8
+    EDITTEXT        IDC_EDIT_DBNAME_POSTGIS,13,112,146,12,ES_AUTOHSCROLL
+    CONTROL         "Key field",IDC_CHECK_FIELD_POSTGIS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,57,56,10
+    CONTROL         "Key field as attribute",IDC_CHECK_FIELDASATTRIBUTE_POSTGIS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,57,78,10
+    LTEXT           "Host",IDC_STATIC,13,130,46,8
+    EDITTEXT        IDC_EDIT_HOST_POSTGIS,13,141,146,12,ES_AUTOHSCROLL
+    LTEXT           "Password",IDC_STATIC,13,213,46,8
+    EDITTEXT        IDC_EDIT_PASSWORD_POSTGIS,13,224,146,12,ES_AUTOHSCROLL
+    LTEXT           "Port",IDC_STATIC,13,157,46,8
+    EDITTEXT        IDC_EDIT_PORT_POSTGIS,13,168,146,12,ES_AUTOHSCROLL
+    LTEXT           "User",IDC_STATIC,13,185,46,8
+    EDITTEXT        IDC_EDIT_USER_POSTGIS,13,196,146,12,ES_AUTOHSCROLL
+    LTEXT           "Connect timeout",IDC_STATIC,13,243,67,8
+    EDITTEXT        IDC_EDIT_CONNECTTIMEOUT_POSTGIS,13,254,146,12,ES_AUTOHSCROLL
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -564,6 +653,56 @@ BEGIN
         VERTGUIDE, 163
         TOPMARGIN, 7
         BOTTOMMARGIN, 296
+    END
+
+    IDD_FORMVIEW_OGR_DATASOURCES, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 162
+        VERTGUIDE, 12
+        VERTGUIDE, 154
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 238
+    END
+
+    IDD_FORMVIEW_OSM_DATASOURCES, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 162
+        VERTGUIDE, 12
+        VERTGUIDE, 154
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 238
+    END
+
+    IDD_FORMVIEW_PYTHON_DATASOURCES, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 162
+        VERTGUIDE, 12
+        VERTGUIDE, 154
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 182
+    END
+
+    IDD_FORMVIEW_POSTGIS_DATASOURCES, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 162
+        VERTGUIDE, 12
+        VERTGUIDE, 154
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 505
+    END
+
+    IDD_TAB_1_POSTGIS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        VERTGUIDE, 13
+        VERTGUIDE, 159
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 303
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -727,6 +866,82 @@ BEGIN
     0, 0, 0, 0,
     0, 0, 100, 0,
     100, 0, 0, 0
+END
+
+IDD_FORMVIEW_OGR_DATASOURCES AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    50, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    100, 0, 0, 0,
+    100, 0, 0, 0
+END
+
+IDD_FORMVIEW_OSM_DATASOURCES AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    50, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    100, 0, 0, 0,
+    100, 0, 0, 0
+END
+
+IDD_FORMVIEW_PYTHON_DATASOURCES AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    50, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    100, 0, 0, 0
+END
+
+IDD_FORMVIEW_POSTGIS_DATASOURCES AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    50, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    100, 0, 0, 0,
+    0, 0, 0, 0
+END
+
+IDD_TAB_1_POSTGIS AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    100, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0
 END
 
 
@@ -933,8 +1148,9 @@ END
 
 STRINGTABLE
 BEGIN
-    ID_VIEW_WORKSPACE       "Show or hide the workspace bar\nToggle Workspace"
-    ID_VIEW_WORKSPACE2      "Show or hide the second workspace bar\nToggle Second Workspace"
+    ID_VIEW_WORKSPACE_LINE  "Show or hide the workspace bar\nToggle Workspace"
+    ID_VIEW_WORKSPACE_LINEPATTERN 
+                            "Show or hide the second workspace bar\nToggle Second Workspace"
     ID_VIEW_USER_TOOLBAR1   "Show or hide the user toolbar\nToggle User ToolBar"
     ID_VIEW_USER_TOOLBAR2   "Show or hide the user toolbar\nToggle User ToolBar"
     ID_VIEW_USER_TOOLBAR3   "Show or hide the user toolbar\nToggle User ToolBar"
@@ -946,15 +1162,29 @@ END
 
 STRINGTABLE
 BEGIN
-    ID_VIEW_USER_TOOLBAR8   "Show or hide the user toolbar\nToggle User ToolBar"
-    ID_VIEW_USER_TOOLBAR9   "Show or hide the user toolbar\nToggle User ToolBar"
-    ID_VIEW_USER_TOOLBAR10  "Show or hide the user toolbar\nToggle User ToolBar"
-    ID_VIEW_OUTPUT          "Show or hide the output bar\nToggle Output"
+    ID_TOOLBOX              "Show or hide the toolbox\nToggle Toolbox"
+    ID_VIEW_WORKSPACE_RASTER 
+                            "Show or hide the second workspace bar\nToggle Second Workspace"
+    ID_VIEW_WORKSPACE_POINT "Show or hide the second workspace bar\nToggle Second Workspace"
+    ID_VIEW_WORKSPACE_DOT   "Show or hide the second workspace bar\nToggle Second Workspace"
+    ID_VIEW_WORKSPACE_OGR   "Show or hide the second workspace bar\nToggle Second Workspace"
 END
 
 STRINGTABLE
 BEGIN
-    ID_TOOLBOX              "Show or hide the toolbox\nToggle Toolbox"
+    ID_VIEW_WORKSPACE_OSM   "Show or hide the second workspace bar\nToggle Second Workspace"
+    ID_VIEW_WORKSPACE_POSTGIS 
+                            "Show or hide the second workspace bar\nToggle Second Workspace"
+    ID_VIEW_WORKSPACE_PYTHON 
+                            "Show or hide the second workspace bar\nToggle Second Workspace"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_USER_TOOLBAR8   "Show or hide the user toolbar\nToggle User ToolBar"
+    ID_VIEW_USER_TOOLBAR9   "Show or hide the user toolbar\nToggle User ToolBar"
+    ID_VIEW_USER_TOOLBAR10  "Show or hide the user toolbar\nToggle User ToolBar"
+    ID_VIEW_OUTPUT          "Show or hide the output bar\nToggle Output"
 END
 
 #endif    // English (United States) resources
