@@ -71,7 +71,7 @@ void Symbolizer_Linepattern::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(Symbolizer_Linepattern, CBCGPFormView)
     ON_BN_CLICKED(IDC_CHECK_DEFAULT_LINEPATTERN, &Symbolizer_Linepattern::OnBnClickedCheckDefault)
     ON_BN_KILLFOCUS(IDC_CHECK_DEFAULT_LINEPATTERN, &Symbolizer_Linepattern::OnEnKillfocus)
-    ON_BN_KILLFOCUS(IDC_COMBO_LINEPATTERN_TYPE, &Symbolizer_Linepattern::OnEnKillfocus)
+    ON_EN_KILLFOCUS(IDC_COMBO_LINEPATTERN_TYPE, &Symbolizer_Linepattern::OnEnKillfocus)
     ON_EN_KILLFOCUS(IDC_EDIT_WIDTH_LINEPATTERN, &Symbolizer_Linepattern::OnEnKillfocusFloat)
     ON_EN_KILLFOCUS(IDC_EDIT_OPACITY_LINEPATTERN, &Symbolizer_Linepattern::OnEnKillfocusFloat)
     ON_EN_KILLFOCUS(IDC_COMBO_JOIN_LINEPATTERN, &Symbolizer_Linepattern::OnEnKillfocus)
@@ -199,13 +199,12 @@ void Symbolizer_Linepattern::OnInitialUpdate()
         m_Ctrl_CompOp.AddString(_T("color"));
         m_Ctrl_CompOp.AddString(_T("value"));
         m_Ctrl_CompOp.SetCurSel(34);
-
-
-        // Create the ToolTip control.
-        m_ToolTip.Create(this);
-        m_ToolTip.Activate(TRUE);
     }
 
+    // Create the ToolTip control.
+    m_ToolTip.Create(this);
+    m_ToolTip.Activate(TRUE);
+    
     CBCGPToolTipParams params;
     params.m_bVislManagerTheme = TRUE;
 
@@ -404,8 +403,6 @@ std::string Symbolizer_Linepattern::SettingsXml()
     doc.Accept(&printer);
 
     return std::string(printer.CStr());
-
-    //return result;
 }
 
 static std::vector<std::string> split(const std::string& s, char delim)

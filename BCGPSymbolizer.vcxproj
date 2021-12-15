@@ -95,7 +95,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\vietbando\vcpkg\packages\tinyxml2_x64-windows\include;E:\vietbando\vcpkg\packages\tinyxml2_x86-windows\include;E:\vietbando\vcpkg\packages\sqlite3_x86-windows\include;E:\vietbando\vcpkg\packages\rapidjson_x86-windows\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\user\vcpkg\installed\x86-windows\include;C:\Users\user\vcpkg\installed\x64-windows\include;C:\Program Files (x86)\BCGSoft\BCGControlBarPro\Bin</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,6 +121,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\user\vcpkg\installed\x64-windows\include;C:\Users\user\vcpkg\installed\x86-windows\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -199,8 +200,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="CTab_one_Postgis.h" />
     <ClInclude Include="CustomToolTipCtrl.h" />
+    <ClInclude Include="Datasources_Ogr.h" />
+    <ClInclude Include="Datasources_Osm.h" />
+    <ClInclude Include="Datasources_Postgis.h" />
+    <ClInclude Include="Datasources_Python.h" />
+    <ClInclude Include="Tabctrl_Postgis.h" />
     <ClInclude Include="WorkSpaceBar_Dot.h" />
+    <ClInclude Include="WorkSpaceBar_Ogr.h" />
+    <ClInclude Include="WorkSpaceBar_Osm.h" />
     <ClInclude Include="WorkSpaceBar_Raster.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="OutputBar.h" />
@@ -222,8 +231,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="CTab_one_Postgis.cpp" />
     <ClCompile Include="CustomToolTipCtrl.cpp" />
+    <ClCompile Include="Datasources_Ogr.cpp" />
+    <ClCompile Include="Datasources_Osm.cpp" />
+    <ClCompile Include="Datasources_Postgis.cpp" />
+    <ClCompile Include="Datasources_Python.cpp" />
+    <ClCompile Include="Tabctrl_Postgis.cpp" />
     <ClCompile Include="WorkSpaceBar_Dot.cpp" />
+    <ClCompile Include="WorkSpaceBar_Ogr.cpp" />
+    <ClCompile Include="WorkSpaceBar_Osm.cpp" />
     <ClCompile Include="WorkSpaceBar_Raster.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="OutputBar.cpp" />

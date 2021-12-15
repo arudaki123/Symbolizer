@@ -8,21 +8,20 @@
 #include "BCGPFormView.h"
 #include "CustomToolTipCtrl.h"
 
-// Symbolizer_Dot form view
+// Datasources_Python form view
 
-class Symbolizer_Dot : public CBCGPFormView
+class Datasources_Python : public CBCGPFormView
 {
-	DECLARE_DYNCREATE(Symbolizer_Dot)
+	DECLARE_DYNCREATE(Datasources_Python)
 
 public:
-	Symbolizer_Dot();           // protected constructor used by dynamic creation
-	virtual ~Symbolizer_Dot();
+	Datasources_Python();           // protected constructor used by dynamic creation
+	virtual ~Datasources_Python();
 
 public:
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_FORMVIEW_DOTSYMBOLIZER };
+	enum { IDD = IDD_FORMVIEW_PYTHON_DATASOURCES };
 #endif
-
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
@@ -30,30 +29,21 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 	CCustomToolTipCtrl	m_ToolTip;
-
 public:
 	BOOL				m_Default;
 	CStatic				m_Ctrl_Reset;
-	CString				m_Opacity;
-	CBCGPColorButton	m_Ctrl_Color;
-	CString				m_Width;
-	CString				m_Height;
-	CComboBox			m_Ctrl_CompOp;
-
+	CString				m_Encoding;
 	CString				m_Script;
 
 	std::string SettingsXml();
 	void SettingsXml(std::string);
 
 	BOOL CreateView(CWnd* pParent, CCreateContext* pContext);
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	virtual void OnInitialUpdate();
 	afx_msg void OnBnClickedCheckDefault();
-	COLORREF GetColor(std::string value);
-
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnEnKillfocus();
-	afx_msg void OnEnKillfocusFloat();
-	afx_msg void OnStnClickedStaticResetDot();
+	afx_msg void OnStnClickedStaticResetPython();
 };
 
 

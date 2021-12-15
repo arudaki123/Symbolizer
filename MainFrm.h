@@ -3,11 +3,16 @@
 
 
 #pragma once
+// Symbolizer
 #include "WorkSpaceBar_Line.h"
 #include "WorkSpaceBar_Linepattern.h"
 #include "WorkSpaceBar_Raster.h"
 #include "WorkSpaceBar_Point.h"
 #include "WorkSpaceBar_Dot.h"
+
+// Datasource
+#include "WorkSpaceBar_Ogr.h"
+#include "WorkSpaceBar_Osm.h"
 
 #include "OutputBar.h"
 #include "PropertiesViewBar.h"
@@ -42,11 +47,16 @@ protected:  // control bar embedded members
 	CBCGPMenuBar						m_wndMenuBar;
 	CBCGPToolBar						m_wndToolBar;
 	
+	// Symbolizer
 	CWorkSpaceBar_Line					m_wndWorkSpace_Line;
 	CWorkSpaceBar_Linepattern			m_wndWorkSpace_Linepattern;
 	CWorkSpaceBar_Raster				m_wndWorkSpace_Raster;
 	CWorkSpaceBar_Point					m_wndWorkSpace_Point;
 	CWorkSpaceBar_Dot					m_wndWorkSpace_Dot;
+
+	// Datasources
+	CWorkSpaceBar_Ogr					m_wndWorkSpace_Ogr;
+	CWorkSpaceBar_Osm					m_wndWorkSpace_Osm;
 
 	COutputBar							m_wndOutput;
 	CBCGPPropBar						m_wndPropGrid;

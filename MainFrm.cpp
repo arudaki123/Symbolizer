@@ -99,56 +99,72 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	globalUtils.ScaleByDPI(imagesWorkspace);
 
 	const int nPaneSize = globalUtils.ScaleByDPI(200);
-
+	//==================================================================================================
+	// Symbolizer
 	if (!m_wndWorkSpace_Line.Create(_T("Line"), this, CRect(0, 0, nPaneSize, nPaneSize),
-		TRUE, ID_VIEW_WORKSPACE,
+		TRUE, ID_VIEW_WORKSPACE_LINE,
 		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create Line\n");
 		return -1;      // fail to create
 	}
-
-	m_wndWorkSpace_Line.SetIcon(imagesWorkspace.ExtractIcon(0), FALSE);
+	m_wndWorkSpace_Line.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
 
 	if (!m_wndWorkSpace_Linepattern.Create(_T("Line Pattern"), this, CRect(0, 0, nPaneSize, nPaneSize),
-		TRUE, ID_VIEW_WORKSPACE2,
+		TRUE, ID_VIEW_WORKSPACE_LINEPATTERN,
 		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create Line Pattern\n");
 		return -1;      // fail to create
 	}
-
-	m_wndWorkSpace_Linepattern.SetIcon(imagesWorkspace.ExtractIcon(1), FALSE);
+	m_wndWorkSpace_Linepattern.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
 
 	if (!m_wndWorkSpace_Raster.Create(_T("Raster"), this, CRect(0, 0, nPaneSize, nPaneSize),
-		TRUE, ID_VIEW_WORKSPACE3,
+		TRUE, ID_VIEW_WORKSPACE_RASTER,
 		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create Raster\n");
 		return -1;      // fail to create
 	}
-
 	m_wndWorkSpace_Raster.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
 
 	if (!m_wndWorkSpace_Point.Create(_T("Point"), this, CRect(0, 0, nPaneSize, nPaneSize),
-		TRUE, ID_VIEW_WORKSPACE4,
+		TRUE, ID_VIEW_WORKSPACE_RASTER,
 		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create Point\n");
 		return -1;      // fail to create
 	}
-
 	m_wndWorkSpace_Point.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
 
 	if (!m_wndWorkSpace_Dot.Create(_T("Dot"), this, CRect(0, 0, nPaneSize, nPaneSize),
-		TRUE, ID_VIEW_WORKSPACE5,
+		TRUE, ID_VIEW_WORKSPACE_DOT,
 		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		TRACE0("Failed to create Dot\n");
 		return -1;      // fail to create
 	}
-
 	m_wndWorkSpace_Dot.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
+
+	//==================================================================================================
+	// Datasources
+	if (!m_wndWorkSpace_Ogr.Create(_T("Ogr"), this, CRect(0, 0, nPaneSize, nPaneSize),
+		TRUE, ID_VIEW_WORKSPACE_OGR,
+		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	{
+		TRACE0("Failed to create Ogr\n");
+		return -1;      // fail to create
+	}
+	m_wndWorkSpace_Ogr.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
+
+	if (!m_wndWorkSpace_Osm.Create(_T("Osm"), this, CRect(0, 0, nPaneSize, nPaneSize),
+		TRUE, ID_VIEW_WORKSPACE_OSM,
+		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	{
+		TRACE0("Failed to create Ogr\n");
+		return -1;      // fail to create
+	}
+	m_wndWorkSpace_Ogr.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
 
 	const int nOutputPaneSize = globalUtils.ScaleByDPI(150);
 
@@ -189,11 +205,17 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// TODO: delete these three lines if you don't want the toolbar to be dockable
 	m_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
+
+	// Symbolizer
 	m_wndWorkSpace_Line.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndWorkSpace_Linepattern.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndWorkSpace_Raster.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndWorkSpace_Point.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndWorkSpace_Dot.EnableDocking(CBRS_ALIGN_ANY);
+
+	// Datasources
+	m_wndWorkSpace_Ogr.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndWorkSpace_Osm.EnableDocking(CBRS_ALIGN_ANY);
 
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndPropGrid.EnableDocking(CBRS_ALIGN_ANY);
@@ -202,11 +224,15 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	EnableAutoHideBars(CBRS_ALIGN_ANY);
 	DockControlBar(&m_wndMenuBar);
 	DockControlBar(&m_wndToolBar);
+
 	DockControlBar(&m_wndWorkSpace_Line);
 	DockControlBar(&m_wndWorkSpace_Linepattern);
 	DockControlBar(&m_wndWorkSpace_Raster);
 	DockControlBar(&m_wndWorkSpace_Point);
 	DockControlBar(&m_wndWorkSpace_Dot);
+
+	DockControlBar(&m_wndWorkSpace_Ogr);
+	DockControlBar(&m_wndWorkSpace_Osm);
 
 	//m_wndWorkSpace2.AttachToTabWnd(&m_wndWorkSpace, BCGP_DM_STANDARD, FALSE, NULL);
 	DockControlBar(&m_wndOutput);

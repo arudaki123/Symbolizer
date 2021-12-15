@@ -7,6 +7,7 @@
 #define IDS_MAIN_TOOLBAR                101
 #define IDD_FORMVIEW_RASTERSYMBOLIZER   102
 #define IDD_FORMVIEW_LINESYMPOLIZER     103
+#define IDD_TAB_1_POSTGIS               105
 #define IDS_WINDOWS_MANAGER             107
 #define IDR_MAINFRAME                   128
 #define IDR_BCGPSymbolizerTYPE          129
@@ -21,7 +22,11 @@
 #define IDD_FORMVIEW_LINEPATTERNSYMPOLIZER 170
 #define IDD_FORMVIEW_POINTSYMBOLIZER    171
 #define IDD_FORMVIEW_DOTSYMBOLIZER      172
+#define IDD_FORMVIEW_OGR_DATASOURCES    173
+#define IDD_FORMVIEW_OSM_DATASOURCES    174
+#define IDD_FORMVIEW_PYTHON_DATASOURCES 175
 #define IDI_ICON_RESET                  176
+#define IDD_FORMVIEW_POSTGIS_DATASOURCES 176
 #define IDC_COMPANY_URL                 1041
 #define IDC_LIST_DLGBAR                 1048
 #define IDC_STATIC_DLGBAR               1049
@@ -103,10 +108,42 @@
 #define IDC_STATIC_RESET_RASTER         1158
 #define IDC_STATIC_RESET_DOT            1159
 #define IDC_COMBO1                      1160
+#define IDC_EDIT_FILE_OGR               1161
+#define IDC_EDIT_BASE_OGR               1162
+#define IDC_EDIT_ENCODING_OGR           1163
+#define IDC_EDIT_XML_OGR                1164
+#define IDC_CHECK_DEFAULT_OGR           1165
+#define IDC_STATIC_RESET_OGR            1166
+#define IDC_STATIC_FILE_OGR             1167
+#define IDC_CHECK_DEFAULT_OSM           1168
+#define IDC_STATIC_RESET_OSM            1169
+#define IDC_EDIT_FILE_OSM               1170
+#define IDC_STATIC_FILE_OSM             1171
+#define IDC_EDIT_BASE_OSM               1172
+#define IDC_EDIT_ENCODING_OSM           1173
+#define IDC_EDIT_XML_OSM                1174
+#define IDC_CHECK_DEFAULT_PYTHON        1175
+#define IDC_STATIC_RESET_PYTHON         1176
+#define IDC_EDIT_ENCODING_PYTHON        1177
+#define IDC_EDIT_XML_PYTHON             1178
+#define IDC_CHECK_DEFAULT_POSTGIS       1179
+#define IDC_STATIC_RESET_POSTGIS        1180
+#define IDC_EDIT_XML_POSTGIS            1181
+#define IDC_EDIT_TABLE_POSTGIS          1182
+#define IDC_CHECK_FIELD_POSTGIS         1183
+#define IDC_CHECK_FIELDASATTRIBUTE_POSTGIS 1184
+#define IDC_EDIT_ENCODING_POSTGIS       1185
+#define IDC_EDIT_DBNAME_POSTGIS         1186
+#define IDC_EDIT_HOST_POSTGIS           1187
+#define IDC_EDIT_PASSWORD_POSTGIS       1188
+#define IDC_EDIT_PORT_POSTGIS           1189
+#define IDC_EDIT_USER_POSTGIS           1190
+#define IDC_EDIT_CONNECTTIMEOUT_POSTGIS 1191
+#define IDC_TAB_POSTGIS                 1192
 #define ID_VIEW_CUSTOMIZE               32770
 #define ID_VIEW_TOOLBARS                32771
-#define ID_VIEW_WORKSPACE               32791
-#define ID_VIEW_WORKSPACE2              32792
+#define ID_VIEW_WORKSPACE_LINE          32791
+#define ID_VIEW_WORKSPACE_LINEPATTERN   32792
 #define ID_VIEW_USER_TOOLBAR1           32793
 #define ID_VIEW_USER_TOOLBAR2           32794
 #define ID_VIEW_USER_TOOLBAR3           32795
@@ -128,17 +165,21 @@
 #define ID_MDI_MOVE_TO_NEXT_GROUP       32832
 #define ID_VIEW_TOOLBOX                 32858
 #define ID_TOOLBOX                      32859
-#define ID_VIEW_WORKSPACE3              32860
-#define ID_VIEW_WORKSPACE4              32861
-#define ID_VIEW_WORKSPACE5              32862
+#define ID_VIEW_WORKSPACE_RASTER        32860
+#define ID_VIEW_WORKSPACE_POINT         32861
+#define ID_VIEW_WORKSPACE_DOT           32862
+#define ID_VIEW_WORKSPACE_OGR           32863
+#define ID_VIEW_WORKSPACE_OSM           32864
+#define ID_VIEW_WORKSPACE_POSTGIS       32865
+#define ID_VIEW_WORKSPACE_PYTHON        32866
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        177
+#define _APS_NEXT_RESOURCE_VALUE        178
 #define _APS_NEXT_COMMAND_VALUE         32860
-#define _APS_NEXT_CONTROL_VALUE         1161
+#define _APS_NEXT_CONTROL_VALUE         1193
 #define _APS_NEXT_SYMED_VALUE           117
 #endif
 #endif
