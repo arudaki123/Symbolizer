@@ -121,16 +121,21 @@ void Datasources_Ogr::OnBnClickedCheckDefault()
 std::string Datasources_Ogr::SettingsXml()
 {
 	UpdateData();
-	//std::string result = "LineSympolizer";
 
-	int idx = 0;
 	tinyxml2::XMLDocument doc;
-	doc.LinkEndChild(doc.NewDeclaration("Datasources"));
+	auto pTop = doc.RootElement();
+	auto pDatasources = doc.NewElement("Datasources");
+	doc.InsertFirstChild(pDatasources);
 
 	auto Element = doc.NewElement("Paramenter");
+	Element->SetAttribute("name", "type");
+	tinyxml2::XMLText* text = doc.NewText("ogr");
+	text->SetCData(true);
+	Element->InsertEndChild(text);
+	pDatasources->InsertEndChild(Element);
+	
 	if (m_Default)
 	{
-		doc.LinkEndChild(Element);
 		tinyxml2::XMLPrinter printer;
 		doc.Accept(&printer);
 
@@ -139,17 +144,38 @@ std::string Datasources_Ogr::SettingsXml()
 
 	// file
 	if (m_File != _T(""))
-		Element->SetAttribute("file", (CT2CA)m_File);
+	{
+		auto FileElement = doc.NewElement("Paramenter");
+		FileElement->SetAttribute("name", "file");
+		text = doc.NewText((CT2CA)m_File);
+		text->SetCData(true);
+		FileElement->InsertEndChild(text);
+		pDatasources->LinkEndChild(FileElement);
+	}
 
 	// base
 	if (m_Base != _T(""))
-		Element->SetAttribute("base", (CT2CA)m_Base);
-
+	{
+		auto BaseElement = doc.NewElement("Paramenter");
+		BaseElement->SetAttribute("name", "base");
+		text = doc.NewText((CT2CA)m_Base);
+		text->SetCData(true);
+		BaseElement->InsertEndChild(text);
+		pDatasources->LinkEndChild(BaseElement);
+	}
+	 
 	// encoding
 	if (m_Encoding != _T("utf-8"))
-		Element->SetAttribute("encoding", (CT2CA)m_Encoding);
+	{
+		auto EncodingElement = doc.NewElement("Paramenter");
+		EncodingElement->SetAttribute("name", "encoding");
+		text = doc.NewText((CT2CA)m_Encoding);
+		text->SetCData(true);
+		EncodingElement->InsertEndChild(text);
+		pDatasources->LinkEndChild(EncodingElement);
+	}
 
-	doc.LinkEndChild(Element);
+	//doc.LinkEndChild(Element);
 	tinyxml2::XMLPrinter printer;
 	doc.Accept(&printer);
 
@@ -160,7 +186,7 @@ void Datasources_Ogr::SettingsXml(std::string str)
 {
 	tinyxml2::XMLDocument doc;
 	doc.Parse((const char*)str.c_str());
-	tinyxml2::XMLElement* titleElement = doc.FirstChildElement("OgrDatasources");
+	tinyxml2::XMLElement* titleElement = doc.FirstChildElement("Datasources");
 	if (titleElement == NULL)
 		return;
 

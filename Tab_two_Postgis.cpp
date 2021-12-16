@@ -17,11 +17,11 @@ CTab_two_Postgis::CTab_two_Postgis(CWnd* pParent /*=nullptr*/)
 	, m_Extent(_T(""))
 	, m_GeometryTable(_T(""))
 	, m_GeometryField(_T(""))
-	, m_CursorSize(_T(""))
-	, m_RowLimit(_T(""))
-	, m_Srid(_T(""))
-	, m_InitialSize(_T(""))
-	, m_MaxSize(_T(""))
+	, m_CursorSize(_T("0"))
+	, m_RowLimit(_T("0"))
+	, m_Srid(_T("0"))
+	, m_InitialSize(_T("1"))
+	, m_MaxSize(_T("10"))
 	, m_Check_EstimateExtent(FALSE)
 	, m_Check_SimplityGeometries(FALSE)
 	, m_Check_AutodetectKeyField(FALSE)
@@ -85,3 +85,4 @@ void CTab_two_Postgis::OnEnKillfocusPostgis()
 		pMainFrm->EnkillFocus_Datasources_Postgis();
 	}
 }
+

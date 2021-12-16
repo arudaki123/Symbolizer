@@ -5,6 +5,8 @@
 #include "Datasources_Postgis.h"
 #include <sstream>
 #include <tinyxml2.h>
+#include "Tab_one_Postgis.h"
+#include "Tab_two_Postgis.h"
 
 // Datasources_Postgis
 
@@ -97,34 +99,313 @@ void Datasources_Postgis::OnBnClickedCheckDefault()
 std::string Datasources_Postgis::SettingsXml()
 {
 	UpdateData();
-	//std::string result = "LineSympolizer";
-
-	int idx = 0;
 	tinyxml2::XMLDocument doc;
-	auto Element = doc.NewElement("PostgisDatasources");
+	auto pTop = doc.RootElement();
+	auto pDatasources = doc.NewElement("Datasources");
+	doc.InsertFirstChild(pDatasources);
+
+	auto Element = doc.NewElement("Paramenter");
+	Element->SetAttribute("name", "type");
+	tinyxml2::XMLText* text = doc.NewText("postgis");
+	text->SetCData(true);
+	Element->InsertEndChild(text);
+	pDatasources->InsertEndChild(Element);
 
 	if (m_Default)
 	{
-		doc.LinkEndChild(Element);
 		tinyxml2::XMLPrinter printer;
 		doc.Accept(&printer);
 
 		return std::string(printer.CStr());
 	}
 
-	// file
-	//if (m_File != _T(""))
-	//	Element->SetAttribute("file", (CT2CA)m_File);
+	CTab_one_Postgis* Tab = (CTab_one_Postgis*)m_MytabCtrl.m_tabPages[0];
 
-	//// base
-	//if (m_Base != _T(""))
-	//	Element->SetAttribute("base", (CT2CA)m_Base);
+	// table
+	if (Tab->m_Table != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "table");
+		text = doc.NewText((CT2CA)Tab->m_Table);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
 
-	//// encoding
-	//if (m_Encoding != _T("utf-8"))
-	//	Element->SetAttribute("encoding", (CT2CA)m_Encoding);
+	// key_field
+	if (Tab->m_Check_Key_Field)
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "key_field");
+		text = doc.NewText(Tab->m_Check_Key_Field ? "TRUE":"FALSE");
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
 
-	doc.LinkEndChild(Element);
+	// key_field_as_attribute
+	if (!Tab->m_Check_KeyFieldAsAttribute)
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "key_field_as_attribute");
+		text = doc.NewText(Tab->m_Check_KeyFieldAsAttribute ? "TRUE" : "FALSE");
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// encoding
+	if (Tab->m_Encoding != _T("utf-8"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "key_field_as_attribute");
+		text = doc.NewText((CT2CA)Tab->m_Encoding);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// dbname
+	if (Tab->m_Dbname != _T("username"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "dbname");
+		text = doc.NewText((CT2CA)Tab->m_Dbname);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// host
+	if (Tab->m_Host != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "host");
+		text = doc.NewText((CT2CA)Tab->m_Host);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// password
+	if (Tab->m_Password != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "password");
+		text = doc.NewText((CT2CA)Tab->m_Password);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// password
+	if (Tab->m_Password != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "password");
+		text = doc.NewText((CT2CA)Tab->m_Password);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+	// password
+	if (Tab->m_Password != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "password");
+		text = doc.NewText((CT2CA)Tab->m_Password);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// port
+	if (Tab->m_Port != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "port");
+		text = doc.NewText((CT2CA)Tab->m_Port);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// user
+	if (Tab->m_User != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "user");
+		text = doc.NewText((CT2CA)Tab->m_User);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// connect_timeout
+	if (Tab->m_ConnectTimeout != _T("4"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "connect_timeout");
+		text = doc.NewText((CT2CA)Tab->m_ConnectTimeout);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	CTab_two_Postgis* Tab2 = (CTab_two_Postgis*)m_MytabCtrl.m_tabPages[1];
+
+	// schema
+	if (Tab2->m_Schema != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "schema");
+		text = doc.NewText((CT2CA)Tab2->m_Schema);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// extent
+	if (Tab2->m_Extent != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "extent");
+		text = doc.NewText((CT2CA)Tab2->m_Extent);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// estimate_extent
+	if (Tab2->m_Check_EstimateExtent)
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "estimate_extent");
+		text = doc.NewText(Tab2->m_Check_EstimateExtent ? "TRUE" : "FALSE");
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// geometry_table
+	if (Tab2->m_GeometryTable != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "geometry_table");
+		text = doc.NewText((CT2CA)Tab2->m_GeometryTable);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// geometry_field
+	if (Tab2->m_GeometryField != _T(""))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "geometry_field");
+		text = doc.NewText((CT2CA)Tab2->m_GeometryField);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// cursor_size
+	if (Tab2->m_CursorSize != _T("0"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "cursor_size");
+		text = doc.NewText((CT2CA)Tab2->m_CursorSize);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// row_limit
+	if (Tab2->m_RowLimit != _T("0"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "row_limit");
+		text = doc.NewText((CT2CA)Tab2->m_RowLimit);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// srid
+	if (Tab2->m_Srid != _T("0"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "srid");
+		text = doc.NewText((CT2CA)Tab2->m_Srid);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// initial_size
+	if (Tab2->m_InitialSize != _T("1"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "initial_size");
+		text = doc.NewText((CT2CA)Tab2->m_InitialSize);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// max_size
+	if (Tab2->m_MaxSize != _T("10"))
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "max_size");
+		text = doc.NewText((CT2CA)Tab2->m_MaxSize);
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// simplify_geometries
+	if (Tab2->m_Check_SimplityGeometries)
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "simplify_geometries");
+		text = doc.NewText(Tab2->m_Check_SimplityGeometries ? "TRUE" : "FALSE");
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// autodetect_key_field
+	if (Tab2->m_Check_AutodetectKeyField)
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "autodetect_key_field");
+		text = doc.NewText(Tab2->m_Check_AutodetectKeyField ? "TRUE" : "FALSE");
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+
+	// persist_connection
+	if (!Tab2->m_Check_PersistConnection)
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "persist_connection");
+		text = doc.NewText(Tab2->m_Check_PersistConnection ? "TRUE" : "FALSE");
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
+	// extent_from_subquery
+	if (Tab2->m_Check_ExtentFromSubquery)
+	{
+		Element = doc.NewElement("Paramenter");
+		Element->SetAttribute("name", "extent_from_subquery");
+		text = doc.NewText(Tab2->m_Check_ExtentFromSubquery ? "TRUE" : "FALSE");
+		text->SetCData(true);
+		Element->InsertEndChild(text);
+		pDatasources->LinkEndChild(Element);
+	}
 	tinyxml2::XMLPrinter printer;
 	doc.Accept(&printer);
 

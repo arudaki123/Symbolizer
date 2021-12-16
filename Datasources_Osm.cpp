@@ -106,6 +106,68 @@ void Datasources_Osm::OnInitialUpdate()
 	OnEnKillfocus();
 }
 
+std::string Datasources_Osm::SettingsXml()
+{
+	UpdateData();
+	tinyxml2::XMLDocument doc;
+	auto pTop = doc.RootElement();
+	auto pDatasources = doc.NewElement("Datasources");
+	doc.InsertFirstChild(pDatasources);
+
+	auto Element = doc.NewElement("Paramenter");
+	Element->SetAttribute("name", "type");
+	tinyxml2::XMLText* text = doc.NewText("osm");
+	text->SetCData(true);
+	Element->InsertEndChild(text);
+	pDatasources->InsertEndChild(Element);
+
+	if (m_Default)
+	{
+		tinyxml2::XMLPrinter printer;
+		doc.Accept(&printer);
+
+		return std::string(printer.CStr());
+	}
+
+	// file
+	if (m_File != _T(""))
+	{
+		auto FileElement = doc.NewElement("Paramenter");
+		FileElement->SetAttribute("name", "file");
+		text = doc.NewText((CT2CA)m_File);
+		text->SetCData(true);
+		FileElement->InsertEndChild(text);
+		pDatasources->LinkEndChild(FileElement);
+	}
+
+	// base
+	if (m_Base != _T(""))
+	{
+		auto BaseElement = doc.NewElement("Paramenter");
+		BaseElement->SetAttribute("name", "base");
+		text = doc.NewText((CT2CA)m_Base);
+		text->SetCData(true);
+		BaseElement->InsertEndChild(text);
+		pDatasources->LinkEndChild(BaseElement);
+	}
+
+	// encoding
+	if (m_Encoding != _T("utf-8"))
+	{
+		auto EncodingElement = doc.NewElement("Paramenter");
+		EncodingElement->SetAttribute("name", "encoding");
+		text = doc.NewText((CT2CA)m_Encoding);
+		text->SetCData(true);
+		EncodingElement->InsertEndChild(text);
+		pDatasources->LinkEndChild(EncodingElement);
+	}
+
+	tinyxml2::XMLPrinter printer;
+	doc.Accept(&printer);
+
+	return std::string(printer.CStr());
+}
+
 void Datasources_Osm::OnBnClickedCheckDefault()
 {
 	UpdateData();
@@ -115,43 +177,6 @@ void Datasources_Osm::OnBnClickedCheckDefault()
 	GetDlgItem(IDC_EDIT_ENCODING_OGR)->EnableWindow(!m_Default);
 
 	OnEnKillfocus();
-}
-
-std::string Datasources_Osm::SettingsXml()
-{
-	UpdateData();
-	//std::string result = "LineSympolizer";
-
-	int idx = 0;
-	tinyxml2::XMLDocument doc;
-	auto Element = doc.NewElement("OsmDatasources");
-
-	if (m_Default)
-	{
-		doc.LinkEndChild(Element);
-		tinyxml2::XMLPrinter printer;
-		doc.Accept(&printer);
-
-		return std::string(printer.CStr());
-	}
-
-	// file
-	if (m_File != _T(""))
-		Element->SetAttribute("file", (CT2CA)m_File);
-
-	// base
-	if (m_Base != _T(""))
-		Element->SetAttribute("base", (CT2CA)m_Base);
-
-	// encoding
-	if (m_Encoding != _T("utf-8"))
-		Element->SetAttribute("encoding", (CT2CA)m_Encoding);
-
-	doc.LinkEndChild(Element);
-	tinyxml2::XMLPrinter printer;
-	doc.Accept(&printer);
-
-	return std::string(printer.CStr());
 }
 
 void Datasources_Osm::SettingsXml(std::string str)

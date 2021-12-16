@@ -99,15 +99,20 @@ void Datasources_Python::OnBnClickedCheckDefault()
 std::string Datasources_Python::SettingsXml()
 {
 	UpdateData();
-	//std::string result = "LineSympolizer";
-
-	int idx = 0;
 	tinyxml2::XMLDocument doc;
-	auto Element = doc.NewElement("PythonDatasources");
+	auto pTop = doc.RootElement();
+	auto pDatasources = doc.NewElement("Datasources");
+	doc.InsertFirstChild(pDatasources);
+
+	auto Element = doc.NewElement("Paramenter");
+	Element->SetAttribute("name", "type");
+	tinyxml2::XMLText* text = doc.NewText("python");
+	text->SetCData(true);
+	Element->InsertEndChild(text);
+	pDatasources->InsertEndChild(Element);
 
 	if (m_Default)
 	{
-		doc.LinkEndChild(Element);
 		tinyxml2::XMLPrinter printer;
 		doc.Accept(&printer);
 
@@ -116,9 +121,15 @@ std::string Datasources_Python::SettingsXml()
 
 	// encoding
 	if (m_Encoding != _T("utf-8"))
-		Element->SetAttribute("encoding", (CT2CA)m_Encoding);
+	{
+		auto EncodingElement = doc.NewElement("Paramenter");
+		EncodingElement->SetAttribute("name", "encoding");
+		text = doc.NewText((CT2CA)m_Encoding);
+		text->SetCData(true);
+		EncodingElement->InsertEndChild(text);
+		pDatasources->LinkEndChild(EncodingElement);
+	}
 
-	doc.LinkEndChild(Element);
 	tinyxml2::XMLPrinter printer;
 	doc.Accept(&printer);
 
