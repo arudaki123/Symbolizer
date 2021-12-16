@@ -13,6 +13,8 @@
 // Datasource
 #include "WorkSpaceBar_Ogr.h"
 #include "WorkSpaceBar_Osm.h"
+#include "WorkSpaceBar_Postgis.h"
+#include "WorkSpaceBar_Python.h"
 
 #include "OutputBar.h"
 #include "PropertiesViewBar.h"
@@ -26,6 +28,7 @@ public:
 
 // Attributes
 public:
+	void EnkillFocus_Datasources_Postgis();
 
 // Operations
 public:
@@ -57,6 +60,8 @@ protected:  // control bar embedded members
 	// Datasources
 	CWorkSpaceBar_Ogr					m_wndWorkSpace_Ogr;
 	CWorkSpaceBar_Osm					m_wndWorkSpace_Osm;
+	CWorkSpaceBar_Postgis				m_wndWorkSpace_Postgis;
+	CWorkSpaceBar_Python				m_wndWorkSpace_Python;
 
 	COutputBar							m_wndOutput;
 	CBCGPPropBar						m_wndPropGrid;

@@ -24,10 +24,14 @@ void Datasources_Postgis::DoDataExchange(CDataExchange* pDX)
 {
 	CBCGPFormView::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_TAB_POSTGIS, m_MytabCtrl);
-
+	DDX_Check(pDX, IDC_CHECK_DEFAULT_POSTGIS, m_Default);
+	DDX_Control(pDX, IDC_STATIC_RESET_POSTGIS, m_Ctrl_Reset);
+	DDX_Text(pDX, IDC_EDIT_XML_POSTGIS, m_Script);
 }
 
 BEGIN_MESSAGE_MAP(Datasources_Postgis, CBCGPFormView)
+	ON_BN_CLICKED(IDC_CHECK_DEFAULT_POSTGIS, &Datasources_Postgis::OnBnClickedCheckDefault)
+	ON_BN_KILLFOCUS(IDC_CHECK_DEFAULT_POSTGIS, &Datasources_Postgis::OnEnKillfocus)
 	ON_STN_CLICKED(IDC_STATIC_RESET_POSTGIS, &Datasources_Postgis::OnStnClickedStaticResetPostgis)
 END_MESSAGE_MAP()
 
@@ -59,8 +63,9 @@ void Datasources_Postgis::OnInitialUpdate()
 	// Set the icon of the button to be the system question mark icon.
 	m_Ctrl_Reset.SetIcon(h_Ico);
 
-	m_MytabCtrl.InsertItem(0, _T("tab 1"));
-
+	m_MytabCtrl.InsertItem(0, _T("Paramenter"));
+	m_MytabCtrl.InsertItem(1, _T("Connect postgis"));
+	
 	m_MytabCtrl.Init();
 
 	// Create the ToolTip control.
@@ -84,9 +89,7 @@ void Datasources_Postgis::OnBnClickedCheckDefault()
 {
 	UpdateData();
 
-	GetDlgItem(IDC_EDIT_FILE_OGR)->EnableWindow(!m_Default);
-	GetDlgItem(IDC_EDIT_BASE_OGR)->EnableWindow(!m_Default);
-	GetDlgItem(IDC_EDIT_ENCODING_OGR)->EnableWindow(!m_Default);
+	GetDlgItem(IDC_TAB_POSTGIS)->EnableWindow(!m_Default);
 
 	OnEnKillfocus();
 }
@@ -151,6 +154,7 @@ void Datasources_Postgis::SettingsXml(std::string str)
 BOOL Datasources_Postgis::PreTranslateMessage(MSG* pMsg)
 {
 	//TODO: Add your specialized code here and/or call the base class
+	
 	switch (pMsg->message)
 	{
 	case WM_KEYDOWN:
@@ -163,6 +167,7 @@ BOOL Datasources_Postgis::PreTranslateMessage(MSG* pMsg)
 	case WM_MBUTTONUP:
 	case WM_MOUSEMOVE:
 		m_ToolTip.RelayEvent(pMsg);
+		m_MytabCtrl.TurnOnEnKill();
 		break;
 	}
 	return CBCGPFormView::PreTranslateMessage(pMsg);
@@ -175,7 +180,12 @@ void Datasources_Postgis::OnEnKillfocus()
 	UpdateData(FALSE);
 }
 
-
+void Datasources_Postgis::EnKillfocus()
+{
+	UpdateData();
+	m_Script.SetString(CString(SettingsXml().c_str()));
+	UpdateData(FALSE);
+}
 
 void Datasources_Postgis::OnStnClickedStaticResetPostgis()
 {

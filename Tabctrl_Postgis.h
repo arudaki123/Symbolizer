@@ -18,5 +18,7 @@ public:
     void Init();
     void SetRetanggle();
     afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+    void OnSize(UINT nType, int cx, int cy);
+    void TurnOnEnKill();
 };
 

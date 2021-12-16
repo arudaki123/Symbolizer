@@ -43,8 +43,8 @@ public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	virtual void OnInitialUpdate();
 	afx_msg void OnEnKillfocus();
+	void EnKillfocus();
 	afx_msg void OnBnClickedCheckDefault();
-
 	afx_msg void OnStnClickedStaticResetPostgis();
 };
 

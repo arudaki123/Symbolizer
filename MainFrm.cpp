@@ -47,6 +47,11 @@ CMainFrame::~CMainFrame()
 {
 }
 
+void CMainFrame::EnkillFocus_Datasources_Postgis()
+{
+	m_wndWorkSpace_Postgis.EnkillFocus_Datasources_Postgis();
+}
+
 int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CBCGPMDIFrameWnd::OnCreate(lpCreateStruct) == -1)
@@ -161,11 +166,31 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		TRUE, ID_VIEW_WORKSPACE_OSM,
 		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
 	{
-		TRACE0("Failed to create Ogr\n");
+		TRACE0("Failed to create Osm\n");
 		return -1;      // fail to create
 	}
-	m_wndWorkSpace_Ogr.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
+	m_wndWorkSpace_Osm.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
 
+	if (!m_wndWorkSpace_Postgis.Create(_T("Postgis"), this, CRect(0, 0, nPaneSize, nPaneSize),
+		TRUE, ID_VIEW_WORKSPACE_POSTGIS,
+		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	{
+		TRACE0("Failed to create Postgis\n");
+		return -1;      // fail to create
+	}
+	m_wndWorkSpace_Postgis.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
+
+	if (!m_wndWorkSpace_Python.Create(_T("Python"), this, CRect(0, 0, nPaneSize, nPaneSize),
+		TRUE, ID_VIEW_WORKSPACE_PYTHON,
+		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	{
+		TRACE0("Failed to create Python\n");
+		return -1;      // fail to create
+	}
+	m_wndWorkSpace_Python.SetIcon(imagesWorkspace.ExtractIcon(2), FALSE);
+
+
+	//==================================================================================================
 	const int nOutputPaneSize = globalUtils.ScaleByDPI(150);
 
 	if (!m_wndOutput.Create(_T("Output"), this, CSize(nOutputPaneSize, nOutputPaneSize),
@@ -216,6 +241,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// Datasources
 	m_wndWorkSpace_Ogr.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndWorkSpace_Osm.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndWorkSpace_Postgis.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndWorkSpace_Python.EnableDocking(CBRS_ALIGN_ANY);
 
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndPropGrid.EnableDocking(CBRS_ALIGN_ANY);
@@ -233,6 +260,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	DockControlBar(&m_wndWorkSpace_Ogr);
 	DockControlBar(&m_wndWorkSpace_Osm);
+	DockControlBar(&m_wndWorkSpace_Postgis);
+	DockControlBar(&m_wndWorkSpace_Python);
 
 	//m_wndWorkSpace2.AttachToTabWnd(&m_wndWorkSpace, BCGP_DM_STANDARD, FALSE, NULL);
 	DockControlBar(&m_wndOutput);

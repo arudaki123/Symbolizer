@@ -77,3 +77,8 @@ void CWorkSpaceBar_Postgis::SettingsXml(std::string str)
 {
 	m_pDatasourcesPostgis->SettingsXml(str);
 }
+
+void CWorkSpaceBar_Postgis::EnkillFocus_Datasources_Postgis()
+{
+	m_pDatasourcesPostgis->EnKillfocus();
+}
