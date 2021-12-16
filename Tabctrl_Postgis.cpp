@@ -14,8 +14,8 @@ CTabctrl_Postgis::CTabctrl_Postgis()
 
 CTabctrl_Postgis::~CTabctrl_Postgis()
 {
-	for (int i = 0; i<m_nNumberOfPages; i++)
-		delete m_tabPages[i];
+	//for (int i = 0; i<m_nNumberOfPages; i++)
+		//delete m_tabPages[i];
 }
 
 BEGIN_MESSAGE_MAP(CTabctrl_Postgis, CBCGPTabCtrl)
