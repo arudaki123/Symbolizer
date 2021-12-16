@@ -21,4 +21,18 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+public:
+	CString			m_Table;
+	BOOL			m_Check_Key_Field;
+	BOOL			m_Check_KeyFieldAsAttribute;
+	CString			m_Encoding;
+	CString			m_Dbname;
+	CString			m_Host;
+	CString			m_Port;
+	CString			m_User;
+	CString			m_Password;
+	CString			m_ConnectTimeout;
+
+	BOOL			m_activeEnKill;
+	afx_msg void OnEnKillfocusPostgis();
 };

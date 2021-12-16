@@ -125,8 +125,9 @@ std::string Datasources_Ogr::SettingsXml()
 
 	int idx = 0;
 	tinyxml2::XMLDocument doc;
-	auto Element = doc.NewElement("OgrDatasources");
+	doc.LinkEndChild(doc.NewDeclaration("Datasources"));
 
+	auto Element = doc.NewElement("Paramenter");
 	if (m_Default)
 	{
 		doc.LinkEndChild(Element);

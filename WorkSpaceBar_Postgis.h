@@ -16,7 +16,7 @@ public:
 	std::string SettingsXml();
 	void SettingsXml(std::string);
 	// Overrides
-
+	void EnkillFocus_Datasources_Postgis();
 	// Implementation
 public:
 	virtual ~CWorkSpaceBar_Postgis();
