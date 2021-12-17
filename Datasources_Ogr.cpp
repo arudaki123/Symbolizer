@@ -4,8 +4,7 @@
 #include "stdafx.h"
 #include "BCGPSymbolizer.h"
 #include "Datasources_Ogr.h"
-#include <sstream>
-#include <tinyxml2.h>
+
 
 // Datasources_Ogr
 
@@ -99,9 +98,9 @@ void Datasources_Ogr::OnInitialUpdate()
 
 	m_ToolTip.SetParams(&params);
 
-	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_OGR), CString(m_ToolTip.m_MapTooltip_Doc["OgrDatasources.file"].c_str()));
-	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_BASE_OGR), CString(m_ToolTip.m_MapTooltip_Doc["OgrDatasources.base"].c_str()));
-	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ENCODING_OGR), CString(m_ToolTip.m_MapTooltip_Doc["OgrDatasources.encoding"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_OGR), CString(m_ToolTip.m_MapTooltip_Doc["ogrdatasources.file"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_BASE_OGR), CString(m_ToolTip.m_MapTooltip_Doc["ogrdatasources.base"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ENCODING_OGR), CString(m_ToolTip.m_MapTooltip_Doc["ogrdatasources.encoding"].c_str()));
 	
 	
 	OnEnKillfocus();
@@ -182,7 +181,11 @@ std::string Datasources_Ogr::SettingsXml()
 	tinyxml2::XMLPrinter printer;
 	doc.Accept(&printer);
 
-	return std::string(printer.CStr());
+	doc.SaveFile("dbscript.txt");
+	std::fstream fs;
+	fs.open("dbscript.txt", std::fstream::in | std::fstream::binary);
+	return std::string(std::istreambuf_iterator<char>(fs), std::istreambuf_iterator<char>());
+	//return std::string(printer.CStr());
 }
 
 void Datasources_Ogr::SettingsXml(std::string str)

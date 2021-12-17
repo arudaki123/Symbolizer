@@ -9,6 +9,8 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
+#include <fstream>
+#include <tinyxml2.h>
 
 
 #if _MSC_VER > 1000

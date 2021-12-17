@@ -21,6 +21,8 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	DECLARE_MESSAGE_MAP()
+
+	CCustomToolTipCtrl	m_ToolTip;
 public:
 	CString			m_Table;
 	BOOL			m_Check_Key_Field;
@@ -36,4 +38,6 @@ public:
 	BOOL			m_activeEnKill;
 	afx_msg void OnEnKillfocusPostgis();
 	void Reset_Value();
+	virtual BOOL OnInitDialog();
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };

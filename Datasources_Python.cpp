@@ -4,8 +4,7 @@
 #include "stdafx.h"
 #include "BCGPSymbolizer.h"
 #include "Datasources_Python.h"
-#include <sstream>
-#include <tinyxml2.h>
+
 
 // Datasources_Python
 
@@ -81,7 +80,7 @@ void Datasources_Python::OnInitialUpdate()
 
 	m_ToolTip.SetParams(&params);
 
-	//m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ENCODING_OGR), CString(m_ToolTip.m_MapTooltip_Doc["OsmDatasources.encoding"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ENCODING_PYTHON), CString(m_ToolTip.m_MapTooltip_Doc["pythondatasources.encoding"].c_str()));
 
 
 	OnEnKillfocus();

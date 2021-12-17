@@ -61,6 +61,39 @@
     <ClCompile Include="WorkSpaceBar_Dot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Datasources_Ogr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Datasources_Osm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Datasources_Postgis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Datasources_Python.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tabctrl_Postgis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkSpaceBar_Ogr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkSpaceBar_Osm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tab_one_Postgis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tab_two_Postgis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkSpaceBar_Postgis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkSpaceBar_Python.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildFrm.h">
@@ -124,6 +157,39 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WorkSpaceBar_Dot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Datasources_Ogr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Datasources_Osm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Datasources_Postgis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Datasources_Python.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tabctrl_Postgis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkSpaceBar_Ogr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkSpaceBar_Osm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tab_one_Postgis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tab_two_Postgis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkSpaceBar_Postgis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkSpaceBar_Python.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

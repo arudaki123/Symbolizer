@@ -3,10 +3,9 @@
 #include "stdafx.h"
 #include "BCGPSymbolizer.h"
 #include "Datasources_Postgis.h"
-#include <sstream>
-#include <tinyxml2.h>
 #include "Tab_one_Postgis.h"
 #include "Tab_two_Postgis.h"
+
 
 // Datasources_Postgis
 
@@ -412,7 +411,11 @@ std::string Datasources_Postgis::SettingsXml()
 	tinyxml2::XMLPrinter printer;
 	doc.Accept(&printer);
 
-	return std::string(printer.CStr());
+	doc.SaveFile("dbscript.txt");
+	std::fstream fs;
+	fs.open("dbscript.txt", std::fstream::in | std::fstream::binary);
+	return std::string(std::istreambuf_iterator<char>(fs), std::istreambuf_iterator<char>());
+	//return std::string(printer.CStr());
 }
 
 void Datasources_Postgis::SettingsXml(std::string str)

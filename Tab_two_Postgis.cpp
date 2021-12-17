@@ -104,3 +104,55 @@ void CTab_two_Postgis::Reset_Value()
 	m_Check_ExtentFromSubquery = FALSE;
 	UpdateData(FALSE);
 }
+
+BOOL CTab_two_Postgis::OnInitDialog()
+{
+	CBCGPDialog::OnInitDialog();
+
+	// Create the ToolTip control.
+	m_ToolTip.Create(this);
+	m_ToolTip.Activate(TRUE);
+
+	CBCGPToolTipParams params;
+	params.m_bVislManagerTheme = TRUE;
+
+	m_ToolTip.SetParams(&params);
+
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SCHEMA_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.schema"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_EXTENT_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.extent"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_ESTIMATE_EXTENT_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.estimate_extent"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GEOMETRY_TABLE_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.geometry_table"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GEOMETRY_FIELD_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.geometry_field"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_CURSOR_SIZE_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.cursor_size"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ROW_LIMIT_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.row_limit"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SRID_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.srid"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_INITIAL_SIZE_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.initial_size"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_MAX_SIZE_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.max_size"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_SIMPLIFY_GEOMETRIES_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.simplify_geometries"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_AUTODETECT_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.autodetect_key_field"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_PERSIST_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.persist_connection"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_EXTENT_FR_SUB_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.extent_from_subquery"].c_str()));
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // EXCEPTION: OCX Property Pages should return FALSE
+}
+
+BOOL CTab_two_Postgis::PreTranslateMessage(MSG* pMsg)
+{
+	//TODO: Add your specialized code here and/or call the base class
+	switch (pMsg->message)
+	{
+	case WM_KEYDOWN:
+	case WM_SYSKEYDOWN:
+	case WM_LBUTTONDOWN:
+	case WM_RBUTTONDOWN:
+	case WM_MBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_RBUTTONUP:
+	case WM_MBUTTONUP:
+	case WM_MOUSEMOVE:
+		m_ToolTip.RelayEvent(pMsg);
+		break;
+	}
+	return CBCGPDialog::PreTranslateMessage(pMsg);
+}

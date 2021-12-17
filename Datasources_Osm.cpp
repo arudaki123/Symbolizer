@@ -3,8 +3,6 @@
 #include "stdafx.h"
 #include "BCGPSymbolizer.h"
 #include "Datasources_Osm.h"
-#include <sstream>
-#include <tinyxml2.h>
 
 // Datasources_Osm
 
@@ -98,9 +96,9 @@ void Datasources_Osm::OnInitialUpdate()
 
 	m_ToolTip.SetParams(&params);
 
-	//m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_OGR), CString(m_ToolTip.m_MapTooltip_Doc["OsmDatasources.file"].c_str()));
-	//m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_BASE_OGR), CString(m_ToolTip.m_MapTooltip_Doc["OsmDatasources.base"].c_str()));
-	//m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ENCODING_OGR), CString(m_ToolTip.m_MapTooltip_Doc["OsmDatasources.encoding"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_OSM), CString(m_ToolTip.m_MapTooltip_Doc["osmdatasources.file"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_BASE_OSM), CString(m_ToolTip.m_MapTooltip_Doc["osmdatasources.base"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ENCODING_OSM), CString(m_ToolTip.m_MapTooltip_Doc["osmdatasources.encoding"].c_str()));
 
 
 	OnEnKillfocus();
@@ -165,7 +163,11 @@ std::string Datasources_Osm::SettingsXml()
 	tinyxml2::XMLPrinter printer;
 	doc.Accept(&printer);
 
-	return std::string(printer.CStr());
+	doc.SaveFile("dbscript.txt");
+	std::fstream fs;
+	fs.open("dbscript.txt", std::fstream::in | std::fstream::binary);
+	return std::string(std::istreambuf_iterator<char>(fs), std::istreambuf_iterator<char>());
+	//return std::string(printer.CStr());
 }
 
 void Datasources_Osm::OnBnClickedCheckDefault()

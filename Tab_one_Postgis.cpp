@@ -88,3 +88,51 @@ void CTab_one_Postgis::Reset_Value()
 	m_Check_KeyFieldAsAttribute = TRUE;
 	UpdateData(FALSE);
 }
+
+BOOL CTab_one_Postgis::OnInitDialog()
+{
+	CBCGPDialog::OnInitDialog();
+
+	// Create the ToolTip control.
+	m_ToolTip.Create(this);
+	m_ToolTip.Activate(TRUE);
+
+	CBCGPToolTipParams params;
+	params.m_bVislManagerTheme = TRUE;
+
+	m_ToolTip.SetParams(&params);
+
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_TABLE_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.table"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_FIELD_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.key_field"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_FIELDASATTRIBUTE_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.key_field_as_attribute"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_ENCODING_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.encoding"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_DBNAME_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.dbname"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_HOST_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.host"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_PORT_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.port"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_USER_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.port"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_PASSWORD_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.password"].c_str()));
+	m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_CONNECTTIMEOUT_POSTGIS), CString(m_ToolTip.m_MapTooltip_Doc["postgisdatasources.connect_timeout"].c_str()));
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // EXCEPTION: OCX Property Pages should return FALSE
+}
+
+BOOL CTab_one_Postgis::PreTranslateMessage(MSG* pMsg)
+{
+	//TODO: Add your specialized code here and/or call the base class
+	switch (pMsg->message)
+	{
+	case WM_KEYDOWN:
+	case WM_SYSKEYDOWN:
+	case WM_LBUTTONDOWN:
+	case WM_RBUTTONDOWN:
+	case WM_MBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_RBUTTONUP:
+	case WM_MBUTTONUP:
+	case WM_MOUSEMOVE:
+		m_ToolTip.RelayEvent(pMsg);
+		break;
+	}
+	return CBCGPDialog::PreTranslateMessage(pMsg);
+}

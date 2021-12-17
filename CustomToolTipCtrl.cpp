@@ -22,10 +22,9 @@ static char THIS_FILE[] = __FILE__;
 // CCustomToolTipCtrl
 
 CCustomToolTipCtrl::CCustomToolTipCtrl()
-
 {
 	m_nCurrID = 0;
-	WriteTooltipSqlite(_T("Tooltip.db"));
+	//WriteTooltipSqlite(_T("Tooltip.db"));
 	ReadTooltipSqlite(_T("Tooltip.db"));
 	
 }
@@ -216,6 +215,107 @@ void CCustomToolTipCtrl::OnShow(NMHDR* pNMHDR, LRESULT* pResult)
 		m_strDescription = CString(m_MapTooltip_Default["dotsymbolizer.comp-op"].c_str()); //_T("default-meaning: Add the current layer on top of other layers.");
 		break;
 
+	// ogr
+	case IDC_EDIT_FILE_OGR:
+		m_strDescription = CString(m_MapTooltip_Default["ogrdatasources.file"].c_str()); 
+		break;
+	case IDC_EDIT_BASE_OGR:
+		m_strDescription = CString(m_MapTooltip_Default["ogrdatasources.base"].c_str());
+		break;
+	case IDC_EDIT_ENCODING_OGR:
+		m_strDescription = CString(m_MapTooltip_Default["ogrdatasources.encoding"].c_str()); 
+		break;
+
+	// osm
+	case IDC_EDIT_FILE_OSM:
+		m_strDescription = CString(m_MapTooltip_Default["osmdatasources.file"].c_str());
+		break;
+	case IDC_EDIT_BASE_OSM:
+		m_strDescription = CString(m_MapTooltip_Default["osmdatasources.base"].c_str());
+		break;
+	case IDC_EDIT_ENCODING_OSM:
+		m_strDescription = CString(m_MapTooltip_Default["osmdatasources.encoding"].c_str());
+		break;
+
+	// postgis
+	case IDC_EDIT_TABLE_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.table"].c_str());
+		break;
+	case IDC_CHECK_FIELD_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.key_field"].c_str());
+		break;
+	case IDC_CHECK_FIELDASATTRIBUTE_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.key_field_as_attribute"].c_str());
+		break;
+	case IDC_EDIT_ENCODING_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.encoding"].c_str());
+		break;
+	case IDC_EDIT_DBNAME_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.dbname"].c_str());
+		break;
+	case IDC_EDIT_HOST_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.host"].c_str());
+		break;
+	case IDC_EDIT_PORT_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.port"].c_str());
+		break;
+	case IDC_EDIT_USER_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.user"].c_str());
+		break;
+	case IDC_EDIT_PASSWORD_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.password"].c_str());
+		break;
+	case IDC_EDIT_CONNECTTIMEOUT_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.connect_timeout"].c_str());
+		break;
+	case IDC_EDIT_SCHEMA_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.schema"].c_str());
+		break;
+	case IDC_EDIT_EXTENT_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.extent"].c_str());
+		break;
+	case IDC_CHECK_ESTIMATE_EXTENT_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.estimate_extent"].c_str());
+		break;
+	case IDC_EDIT_GEOMETRY_TABLE_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.geometry_table"].c_str());
+		break;
+	case IDC_EDIT_GEOMETRY_FIELD_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.geometry_field"].c_str());
+		break;
+	case IDC_EDIT_CURSOR_SIZE_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.cursor_size"].c_str());
+		break;
+	case IDC_EDIT_ROW_LIMIT_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.row_limit"].c_str());
+		break;
+	case IDC_EDIT_SRID_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.srid"].c_str());
+		break;
+	case IDC_EDIT_INITIAL_SIZE_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.initial_size"].c_str());
+		break;
+	case IDC_EDIT_MAX_SIZE_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.max_size"].c_str());
+		break;
+	case IDC_CHECK_SIMPLIFY_GEOMETRIES_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.simplify_geometries"].c_str());
+		break;
+	case IDC_CHECK_AUTODETECT_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.autodetect_key_field"].c_str());
+		break;
+	case IDC_CHECK_PERSIST_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.persist_connection"].c_str());
+		break;
+	case IDC_CHECK_EXTENT_FR_SUB_POSTGIS:
+		m_strDescription = CString(m_MapTooltip_Default["postgisdatasources.extent_from_subquery"].c_str());
+		break;
+
+	// python
+	case IDC_EDIT_ENCODING_PYTHON:
+		m_strDescription = CString(m_MapTooltip_Default["pythondatasources.encoding"].c_str());
+		break;
+
 	default:
 		m_strDescription.Empty();
 	}
@@ -321,6 +421,43 @@ BOOL CCustomToolTipCtrl::ReadTooltipSqlite(CString path)
 		//AfxMessageBox(CString("TEST: ID = ") + CString(sqlite3_column_text(stmt, 0)) + CString(sqlite3_column_text(stmt, 1)));
 	}
 	if (ret_code != SQLITE_DONE) 
+	{
+		//this error handling could be done better, but it works
+		AfxMessageBox(CString("ERROR: while performing sql: ") + CString(sqlite3_errmsg(db)));
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/* Create SQL statement */
+	sql = "SELECT * from DATASOURCES";
+
+	// compile sql statement to binary
+	if (sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) != SQLITE_OK) {
+		AfxMessageBox(CString("ERROR: while compiling sql: ") + CString(sqlite3_errmsg(db)));
+		sqlite3_close(db);
+		sqlite3_finalize(stmt);
+		return FALSE;
+	}
+
+	// execute sql statement, and while there are rows returned, print ID
+	ret_code = 0;
+	while ((ret_code = sqlite3_step(stmt)) == SQLITE_ROW)
+	{
+		std::string value = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+		value.replace(value.begin(), value.begin() + 5, "");
+		value.replace(value.end() - 6, value.end(), "");
+		size_t pos = value.find('|');
+		std::string str_Doc = value.substr(0, pos);
+		m_MapTooltip_Doc[std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)))] = str_Doc;
+		if (pos >= value.size())
+			m_MapTooltip_Default[std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)))] = "";
+		else
+		{
+			value.erase(0, pos + 1);
+			m_MapTooltip_Default[std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)))] = value;
+		}
+		//AfxMessageBox(CString("TEST: ID = ") + CString(sqlite3_column_text(stmt, 0)) + CString(sqlite3_column_text(stmt, 1)));
+	}
+	if (ret_code != SQLITE_DONE)
 	{
 		//this error handling could be done better, but it works
 		AfxMessageBox(CString("ERROR: while performing sql: ") + CString(sqlite3_errmsg(db)));
@@ -504,7 +641,8 @@ BOOL CCustomToolTipCtrl::WriteTooltipSqlite(CString path)
 				const rapidjson::Value& doc = Attribute["doc"];
 				assert(doc.IsString());
 				std::string str_doc = doc.GetString();
-
+				if (str_doc == "")
+					continue;
 				const rapidjson::Value& default_meaning = Attribute["default-meaning"];
 				assert(default_meaning.IsString());
 				std::string str_default_meaning = default_meaning.GetString();

@@ -1,0 +1,3 @@
+<Datasource>
+    <Paramenter name="type"><![CDATA[postgis]]></Paramenter>
+</Datasource>
