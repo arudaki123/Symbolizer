@@ -86,3 +86,21 @@ void CTab_two_Postgis::OnEnKillfocusPostgis()
 	}
 }
 
+void CTab_two_Postgis::Reset_Value()
+{
+	m_Schema = _T("");
+	m_Extent = _T("");
+	m_GeometryTable = _T("");
+	m_GeometryField = _T("");
+	m_CursorSize = _T("0");
+	m_RowLimit = _T("0");
+	m_Srid = _T("0");
+	m_InitialSize = _T("1");
+	m_MaxSize = _T("10");
+	m_Check_EstimateExtent = FALSE;
+	m_Check_SimplityGeometries = FALSE;
+	m_Check_AutodetectKeyField = FALSE;
+	m_Check_PersistConnection = TRUE;
+	m_Check_ExtentFromSubquery = FALSE;
+	UpdateData(FALSE);
+}

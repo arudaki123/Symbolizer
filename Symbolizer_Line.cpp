@@ -219,25 +219,25 @@ void Symbolizer_Line::OnInitialUpdate()
 
     m_ToolTip.SetParams(&params);
     
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.default"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_MFCCOLORBUTTON_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_WIDTH_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-width"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-opacity"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_JOIN_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-linejoin"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_CAP_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-linecap"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GAMMA_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-gamma"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_GAMMA_METHOD_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-gamma-method"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_DASHARRAY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-dasharray"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_DASHOFFSET_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-dashoffset"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_MITERLIMIT_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.stroke-miterlimit"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_CLIP_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.clip"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SIMPLIFY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.simplify"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_SIMPLIFY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.simplify-algorithm"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SMOOTH_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.smooth"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OFFSET_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.offset"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_RASTERIZER_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.rasterizer"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GEOMETRY_TRANSFORM_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.geometry-transform"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_LINE), CString(m_ToolTip.m_MapTooltip_Doc["LineSymbolizer.comp-op"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.default"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_MFCCOLORBUTTON_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_WIDTH_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-width"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-opacity"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_JOIN_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-linejoin"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_CAP_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-linecap"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GAMMA_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-gamma"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_GAMMA_METHOD_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-gamma-method"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_DASHARRAY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-dasharray"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_DASHOFFSET_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-dashoffset"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_MITERLIMIT_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.stroke-miterlimit"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_CLIP_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.clip"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SIMPLIFY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.simplify"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_SIMPLIFY_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.simplify-algorithm"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SMOOTH_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.smooth"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OFFSET_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.offset"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_RASTERIZER_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.rasterizer"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GEOMETRY_TRANSFORM_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.geometry-transform"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_LINE), CString(m_ToolTip.m_MapTooltip_Doc["linesymbolizer.comp-op"].c_str()));
 
     //// TODO: Use one of the following forms to add controls:
     //m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_LINE), _T("Allows omitting a line symbolizer rule or emitting it with default values."));

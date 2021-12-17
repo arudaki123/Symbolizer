@@ -39,4 +39,5 @@ public:
 	BOOL			m_activeEnKill;
 	//void SetDefault();
 	afx_msg void OnEnKillfocusPostgis();
+	void Reset_Value();
 };

@@ -210,24 +210,24 @@ void Symbolizer_Linepattern::OnInitialUpdate()
 
     m_ToolTip.SetParams(&params);
     
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.default"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_LINEPATTERN_TYPE), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.line-pattern"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.file"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_CLIP_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.clip"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.opacity"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SIMPLIFY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.simplify"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_SIMPLIFY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.simplify-algorithm"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SMOOTH_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.smooth"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OFFSET_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.offset"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GEOMETRY_TRANSFORM_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.geometry-transform"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_TRANSFORM_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.transform"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.comp-op"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_ALIGNMENT_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.alignment"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_WIDTH_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.stroke-width"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_CAP_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.stroke-linecap"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_JOIN_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.stroke-linejoin"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_MITERLIMIT_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.stroke-miterlimit"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_DASHARRAY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["LinePatternSymbolizer.stroke-dasharray"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.default"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_LINEPATTERN_TYPE), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.line-pattern"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.file"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_CLIP_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.clip"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.opacity"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SIMPLIFY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.simplify"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_SIMPLIFY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.simplify-algorithm"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_SMOOTH_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.smooth"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OFFSET_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.offset"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_GEOMETRY_TRANSFORM_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.geometry-transform"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_TRANSFORM_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.transform"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.comp-op"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_ALIGNMENT_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.alignment"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_WIDTH_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.stroke-width"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_CAP_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.stroke-linecap"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_JOIN_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.stroke-linejoin"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_MITERLIMIT_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.stroke-miterlimit"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_DASHARRAY_LINEPATTERN), CString(m_ToolTip.m_MapTooltip_Doc["line-patternsymbolizer.stroke-dasharray"].c_str()));
 
     //// TODO: Use one of the following forms to add controls:
     //m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_LINEPATTERN), _T("Allows omitting a line symbolizer rule or emitting it with default values."));

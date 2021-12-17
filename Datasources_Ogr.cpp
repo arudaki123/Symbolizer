@@ -115,6 +115,9 @@ void Datasources_Ogr::OnBnClickedCheckDefault()
 	GetDlgItem(IDC_EDIT_BASE_OGR)->EnableWindow(!m_Default);
 	GetDlgItem(IDC_EDIT_ENCODING_OGR)->EnableWindow(!m_Default);
 
+	std::string data = SettingsXml();
+	SettingsXml(data);
+
 	OnEnKillfocus();
 }
 
@@ -124,7 +127,7 @@ std::string Datasources_Ogr::SettingsXml()
 
 	tinyxml2::XMLDocument doc;
 	auto pTop = doc.RootElement();
-	auto pDatasources = doc.NewElement("Datasources");
+	auto pDatasources = doc.NewElement("Datasource");
 	doc.InsertFirstChild(pDatasources);
 
 	auto Element = doc.NewElement("Paramenter");
@@ -186,18 +189,28 @@ void Datasources_Ogr::SettingsXml(std::string str)
 {
 	tinyxml2::XMLDocument doc;
 	doc.Parse((const char*)str.c_str());
-	tinyxml2::XMLElement* titleElement = doc.FirstChildElement("Datasources");
-	if (titleElement == NULL)
-		return;
-
-	if (titleElement->FindAttribute("file"))
-		m_File.SetString(CString(titleElement->Attribute("file")));
-
-	if (titleElement->FindAttribute("base"))
-		m_Base.SetString(CString(titleElement->Attribute("base")));
-
-	if (titleElement->FindAttribute("encoding"))
-		m_Encoding.SetString(CString(titleElement->Attribute("encoding")));
+	auto titleElement = doc.FirstChildElement("Datasource");
+	CString name;
+	auto Element = titleElement->FirstChildElement("Paramenter");
+	name = CString(Element->Attribute("name"));
+	if (name == _T("type") && CString(Element->GetText()) == _T("ogr"))
+	{
+		Element = Element->NextSiblingElement("Paramenter");
+		while (Element)
+		{
+			if (Element->FindAttribute("name"))
+			{
+				name = CString(Element->Attribute("name"));
+				if (name == _T("file"))
+					m_File.SetString(CString(Element->GetText()));
+				if (name == _T("base"))
+					m_Base.SetString(CString(Element->GetText()));
+				if (name == _T("encoding"))
+					m_Encoding.SetString(CString(Element->GetText()));
+			}
+			Element = Element->NextSiblingElement("Paramenter");
+		}
+	}
 
 	UpdateData(false);
 }

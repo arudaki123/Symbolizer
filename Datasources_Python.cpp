@@ -140,12 +140,20 @@ void Datasources_Python::SettingsXml(std::string str)
 {
 	tinyxml2::XMLDocument doc;
 	doc.Parse((const char*)str.c_str());
-	tinyxml2::XMLElement* titleElement = doc.FirstChildElement("PythonDatasources");
-	if (titleElement == NULL)
-		return;
-
-	if (titleElement->FindAttribute("encoding"))
-		m_Encoding.SetString(CString(titleElement->Attribute("encoding")));
+	auto titleElement = doc.FirstChildElement("Datasource");
+	CString name;
+	auto Element = titleElement->FirstChildElement("Paramenter");
+	name = CString(Element->Attribute("name"));
+	if (name == _T("type") && CString(Element->GetText()) == _T("python"))
+	{
+		Element = Element->NextSiblingElement("Paramenter");
+		while (Element)
+		{
+			if (CString(Element->Attribute("name")) == _T("encoding"))
+				m_Encoding.SetString(CString(Element->GetText()));
+			Element = Element->NextSiblingElement("Paramenter");
+		}
+	}
 
 	UpdateData(false);
 }

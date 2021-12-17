@@ -65,8 +65,9 @@ void Datasources_Postgis::OnInitialUpdate()
 	// Set the icon of the button to be the system question mark icon.
 	m_Ctrl_Reset.SetIcon(h_Ico);
 
-	m_MytabCtrl.InsertItem(0, _T("Paramenter"));
 	m_MytabCtrl.InsertItem(1, _T("Connect postgis"));
+	m_MytabCtrl.InsertItem(0, _T("Paramenter"));
+	
 	
 	m_MytabCtrl.Init();
 
@@ -101,7 +102,7 @@ std::string Datasources_Postgis::SettingsXml()
 	UpdateData();
 	tinyxml2::XMLDocument doc;
 	auto pTop = doc.RootElement();
-	auto pDatasources = doc.NewElement("Datasources");
+	auto pDatasources = doc.NewElement("Datasource");
 	doc.InsertFirstChild(pDatasources);
 
 	auto Element = doc.NewElement("Paramenter");
@@ -120,6 +121,7 @@ std::string Datasources_Postgis::SettingsXml()
 	}
 
 	CTab_one_Postgis* Tab = (CTab_one_Postgis*)m_MytabCtrl.m_tabPages[0];
+	Tab->UpdateData();
 
 	// table
 	if (Tab->m_Table != _T(""))
@@ -253,6 +255,7 @@ std::string Datasources_Postgis::SettingsXml()
 	}
 
 	CTab_two_Postgis* Tab2 = (CTab_two_Postgis*)m_MytabCtrl.m_tabPages[1];
+	Tab2->UpdateData();
 
 	// schema
 	if (Tab2->m_Schema != _T(""))
@@ -416,19 +419,72 @@ void Datasources_Postgis::SettingsXml(std::string str)
 {
 	tinyxml2::XMLDocument doc;
 	doc.Parse((const char*)str.c_str());
-	tinyxml2::XMLElement* titleElement = doc.FirstChildElement("PostgisDatasources");
-	if (titleElement == NULL)
-		return;
-
-	/*if (titleElement->FindAttribute("file"))
-		m_File.SetString(CString(titleElement->Attribute("file")));
-
-	if (titleElement->FindAttribute("base"))
-		m_Base.SetString(CString(titleElement->Attribute("base")));
-
-	if (titleElement->FindAttribute("encoding"))
-		m_Encoding.SetString(CString(titleElement->Attribute("encoding")));*/
-
+	auto titleElement = doc.FirstChildElement("Datasource");
+	CString name;
+	auto Element = titleElement->FirstChildElement("Paramenter");
+	name = CString(Element->Attribute("name"));
+	if (name == _T("type") && CString(Element->GetText()) == _T("postgis"))
+	{
+		Element = Element->NextSiblingElement("Paramenter");
+		CTab_one_Postgis* Tab = (CTab_one_Postgis*)m_MytabCtrl.m_tabPages[0];
+		CTab_two_Postgis* Tab2 = (CTab_two_Postgis*)m_MytabCtrl.m_tabPages[1];
+		while (Element)
+		{
+			if (Element->FindAttribute("name"))
+			{
+				name = CString(Element->Attribute("name"));
+				if (name == _T("table"))
+					Tab->m_Table.SetString(CString(Element->GetText()));
+				if (name == _T("key_field"))
+					Tab->m_Check_Key_Field = CString(Element->GetText()) == _T("TRUE") ? TRUE : FALSE;
+				if (name == _T("key_field_as_attribute"))
+					Tab->m_Check_KeyFieldAsAttribute = CString(Element->GetText()) == _T("TRUE") ? TRUE : FALSE;
+				if (name == _T("encoding"))
+					Tab->m_Encoding.SetString(CString(Element->GetText()));
+				if (name == _T("dbname"))
+					Tab->m_Dbname.SetString(CString(Element->GetText()));
+				if (name == _T("host"))
+					Tab->m_Host.SetString(CString(Element->GetText()));
+				if (name == _T("password"))
+					Tab->m_Password.SetString(CString(Element->GetText()));
+				if (name == _T("port"))
+					Tab->m_Port.SetString(CString(Element->GetText()));
+				if (name == _T("user"))
+					Tab->m_User.SetString(CString(Element->GetText()));
+				if (name == _T("connect_timeout"))
+					Tab->m_ConnectTimeout.SetString(CString(Element->GetText()));
+				if (name == _T("schema"))
+					Tab2->m_Schema.SetString(CString(Element->GetText()));
+				if (name == _T("extent"))
+					Tab2->m_Extent.SetString(CString(Element->GetText()));
+				if (name == _T("estimate_extent"))
+					Tab2->m_Check_EstimateExtent=CString(Element->GetText()) == _T("TRUE") ? TRUE : FALSE;
+				if (name == _T("geometry_table"))
+					Tab2->m_GeometryTable.SetString(CString(Element->GetText()));
+				if (name == _T("geometry_field"))
+					Tab2->m_GeometryField.SetString(CString(Element->GetText()));
+				if (name == _T("cursor_size"))
+					Tab2->m_CursorSize.SetString(CString(Element->GetText()));
+				if (name == _T("row_limit"))
+					Tab2->m_RowLimit.SetString(CString(Element->GetText()));
+				if (name == _T("srid"))
+					Tab2->m_Srid.SetString(CString(Element->GetText()));
+				if (name == _T("initial_size"))
+					Tab2->m_InitialSize.SetString(CString(Element->GetText()));
+				if (name == _T("max_size"))
+					Tab2->m_MaxSize.SetString(CString(Element->GetText()));
+				if (name == _T("simplify_geometries"))
+					Tab2->m_Check_SimplityGeometries = CString(Element->GetText()) == _T("TRUE") ? TRUE : FALSE;
+				if (name == _T("autodetect_key_field"))
+					Tab2->m_Check_AutodetectKeyField = CString(Element->GetText()) == _T("TRUE") ? TRUE : FALSE;
+				if (name == _T("persist_connection"))
+					Tab2->m_Check_PersistConnection = CString(Element->GetText()) == _T("TRUE") ? TRUE : FALSE;
+				if (name == _T("extent_from_subquery"))
+					Tab2->m_Check_ExtentFromSubquery = CString(Element->GetText()) == _T("TRUE") ? TRUE : FALSE;
+			}
+			Element = Element->NextSiblingElement("Paramenter");
+		}
+	}
 	UpdateData(false);
 }
 
@@ -461,14 +517,14 @@ void Datasources_Postgis::OnEnKillfocus()
 	UpdateData(FALSE);
 }
 
-void Datasources_Postgis::EnKillfocus()
-{
-	UpdateData();
-	m_Script.SetString(CString(SettingsXml().c_str()));
-	UpdateData(FALSE);
-}
-
 void Datasources_Postgis::OnStnClickedStaticResetPostgis()
 {
-	
+	CTab_one_Postgis* Tab = (CTab_one_Postgis*)m_MytabCtrl.m_tabPages[0];
+	CTab_two_Postgis* Tab2 = (CTab_two_Postgis*)m_MytabCtrl.m_tabPages[1];
+
+	Tab->Reset_Value();
+	Tab2->Reset_Value();
+
+	OnEnKillfocus();
+	UpdateData(FALSE);
 }

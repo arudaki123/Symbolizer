@@ -17,6 +17,7 @@ CTab_one_Postgis::CTab_one_Postgis(CWnd* pParent /*=nullptr*/)
 	, m_Dbname(_T("username"))
 	, m_Host(_T(""))
 	, m_Port(_T(""))
+	, m_User(_T(""))
 	, m_Password(_T(""))
 	, m_ConnectTimeout(_T("4"))
 	, m_Check_Key_Field(FALSE)
@@ -71,4 +72,19 @@ void CTab_one_Postgis::OnEnKillfocusPostgis()
 		CMainFrame* pMainFrm = (CMainFrame*)(AfxGetApp()->m_pMainWnd);
 		pMainFrm->EnkillFocus_Datasources_Postgis();
 	}
+}
+
+void CTab_one_Postgis::Reset_Value()
+{
+	m_Table = _T("");
+	m_Encoding = _T("utf-8");
+	m_Dbname = _T("username");
+	m_Host = _T("");
+	m_Port = _T("");
+	m_Password = _T("");
+	m_User = _T("");
+	m_ConnectTimeout = _T("4");
+	m_Check_Key_Field = FALSE;
+	m_Check_KeyFieldAsAttribute = TRUE;
+	UpdateData(FALSE);
 }

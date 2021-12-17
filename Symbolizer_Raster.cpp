@@ -189,16 +189,16 @@ void Symbolizer_Raster::OnInitialUpdate()
 
     m_ToolTip.SetParams(&params);
    
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.default"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.opacity"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILTERFACTOR_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.filter-factor"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_SCALING_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.scaling"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_MESHSIZE_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.mesh-size"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.comp-op"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_DEFAULTMODE_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.default-mode"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_MFCCOLORBUTTON_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.default-color"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_EPSILON_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.epsilon"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_STOP_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["RasterSymbolizer.stop"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.default"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.opacity"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILTERFACTOR_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.filter-factor"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_SCALING_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.scaling"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_MESHSIZE_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.mesh-size"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.comp-op"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_DEFAULTMODE_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.default-mode"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_MFCCOLORBUTTON_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.default-color"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_EPSILON_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.epsilon"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_STOP_RASTER), CString(m_ToolTip.m_MapTooltip_Doc["rastersymbolizer.stop"].c_str()));
 
     //// TODO: Use one of the following forms to add controls:
     //m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_RASTER), _T("Allows omitting a line symbolizer rule or emitting it with default values."));

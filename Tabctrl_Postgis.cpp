@@ -90,17 +90,13 @@ void CTabctrl_Postgis::OnSize(UINT nType, int cx, int cy)
 		m_tabPages[i]->SetWindowPos(&wndTop, nX, nY, nXc, nYc, SWP_HIDEWINDOW);
 	}
 	m_tabPages[m_tabCurrent]->SetWindowPos(&wndTop, nX, nY, nXc, nYc, SWP_SHOWWINDOW);
-	/*for (int i = m_numberOfPages - 1; i >= 0; i--) {
-		m_tabPages[i]->SetWindowPos(&wndTop, nX, nY, nXc, nYc, SWP_SHOWWINDOW);
-	}*/
-	//m_tabPages[m_tapCurrent]->SetFocus();
+	
 }
 
 void CTabctrl_Postgis::TurnOnEnKill()
 {
-	for (int i = 0; i < m_nNumberOfPages; i++)
-	{
-		CTab_one_Postgis* Tab = (CTab_one_Postgis*)m_tabPages[i];
-		Tab->m_activeEnKill = TRUE;
-	}
+	CTab_one_Postgis* Tab = (CTab_one_Postgis*)m_tabPages[0];
+	Tab->m_activeEnKill = TRUE;
+	CTab_two_Postgis* Tab2 = (CTab_two_Postgis*)m_tabPages[1];
+	Tab2->m_activeEnKill = TRUE;
 }

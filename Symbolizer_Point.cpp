@@ -165,15 +165,15 @@ void Symbolizer_Point::OnInitialUpdate()
 
     m_ToolTip.SetParams(&params);
     
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.default"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.file"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_STATIC_FILE_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.file"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_ALLOWOVERLAP_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.allow-overlap"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_IGNORE_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.ignore-placement"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.opacity"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_PLACEMENT_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.placement"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_TRANSFORM_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.transform"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_POINT), CString(m_ToolTip.m_MapTooltip_Doc["PointSymbolizer.comp-op"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.default"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_FILE_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.file"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_STATIC_FILE_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.file"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_ALLOWOVERLAP_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.allow-overlap"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_IGNORE_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.ignore-placement"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.opacity"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_PLACEMENT_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.placement"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_TRANSFORM_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.transform"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_POINT), CString(m_ToolTip.m_MapTooltip_Doc["pointsymbolizer.comp-op"].c_str()));
 
     //// TODO: Use one of the following forms to add controls:
     //m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_POINT), _T("Allows omitting a line symbolizer rule or emitting it with default values."));

@@ -136,12 +136,12 @@ void Symbolizer_Dot::OnInitialUpdate()
     m_ToolTip.SetParams(&params);
     //m_ToolTip.initDot();
 
-    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_DOT), CString(m_ToolTip.m_MapTooltip_Doc["DotSymbolizer.default"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_MFCCOLORBUTTON_DOT), CString(m_ToolTip.m_MapTooltip_Doc["DotSymbolizer.fill"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_DOT), CString(m_ToolTip.m_MapTooltip_Doc["DotSymbolizer.opacity"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_WIDTH_DOT), CString(m_ToolTip.m_MapTooltip_Doc["DotSymbolizer.width"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_HEIGHT_DOT), CString(m_ToolTip.m_MapTooltip_Doc["DotSymbolizer.height"].c_str()));
-    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_DOT), CString(m_ToolTip.m_MapTooltip_Doc["DotSymbolizer.comp-op"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_DOT), CString(m_ToolTip.m_MapTooltip_Doc["dotsymbolizer.default"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_MFCCOLORBUTTON_DOT), CString(m_ToolTip.m_MapTooltip_Doc["dotsymbolizer.fill"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_OPACITY_DOT), CString(m_ToolTip.m_MapTooltip_Doc["dotsymbolizer.opacity"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_WIDTH_DOT), CString(m_ToolTip.m_MapTooltip_Doc["dotsymbolizer.width"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_EDIT_HEIGHT_DOT), CString(m_ToolTip.m_MapTooltip_Doc["dotsymbolizer.height"].c_str()));
+    m_ToolTip.AddTool(GetDlgItem(IDC_COMBO_COMP_OP_DOT), CString(m_ToolTip.m_MapTooltip_Doc["dotsymbolizer.comp-op"].c_str()));
 
     // TODO: Use one of the following forms to add controls:
    /* m_ToolTip.AddTool(GetDlgItem(IDC_CHECK_DEFAULT_DOT), _T("Allows omitting a dot symbolizer rule or emitting it with default values."));
