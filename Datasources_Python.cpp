@@ -132,7 +132,11 @@ std::string Datasources_Python::SettingsXml()
 	tinyxml2::XMLPrinter printer;
 	doc.Accept(&printer);
 
-	return std::string(printer.CStr());
+	doc.SaveFile("dbscript.txt");
+	std::fstream fs;
+	fs.open("dbscript.txt", std::fstream::in | std::fstream::binary);
+	return std::string(std::istreambuf_iterator<char>(fs), std::istreambuf_iterator<char>());
+	//return std::string(printer.CStr());
 }
 
 void Datasources_Python::SettingsXml(std::string str)
